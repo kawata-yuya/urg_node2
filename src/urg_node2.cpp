@@ -77,7 +77,7 @@ UrgNode2::CallbackReturn UrgNode2::on_configure(const rclcpp_lifecycle::State & 
   if (use_multiecho_) {
     echo_pub_ = std::make_unique<laser_proc::LaserPublisher>(get_node_topics_interface(), 20);
   } else {
-    scan_pub_ = create_publisher<sensor_msgs::msg::LaserScan>("scan", rclcpp::QoS(20));
+    scan_pub_ = create_publisher<sensor_msgs::msg::LaserScan>("scan", rclcpp::SensorDataQoS());
   }
 
   // スレッド起動
